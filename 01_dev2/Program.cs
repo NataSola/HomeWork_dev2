@@ -1,49 +1,85 @@
 ﻿// Имеется числовой массив A заполненный числами из отрезка [minValue; maxValue]. 
 // Создать на его основе масив B, отбрасывая те, которые нарушают порядок
-// 1-возрастания
-// 2-элементы, больше 8
-// 3-знакочередования
+// 1-возрастания; 2-элементы, больше 8; 3-знакочередования
 
-//Console.ReadLine()
+Console.Clear();                                            // очистить окно терминала
+
+int n = 30;                                                 // размер массива
+int k = 8;                                                  // переманная для выбора элементов больше k
+int[] arrayA = new int[n];                                  // объявление массивов
+int[] arrayB = new int[arrayA.Length];
+string txtArray = $"Массив A из {n} случайных чисел из диапазона от -100 до 100 включительно:";  // тексты для заголовков 
+string txtAscending = "Элементы массива А, не нарушающие порядок чередования:";
+string txtMoreThan = $"Массив В из элементов массива А, которые больше {k}:";
+string txtAlterSign = "Элементы массива А, не нарушающих порядок знакочередования:";
 
 
-int n = 20;                                         // размер массива
-int[] arrayA = new int[n];                          // объявление массива
-
-
-void FillArray(int[] array)                         // метод заполнения массива
+void FillArray(int[] array)                                 // метод заполнения массива
 {
-    for (int i = 0; i < n; i++)                     // количество элементов n, для каждого элемента:
+    for (int i = 0; i < n; i++)                             // количество элементов n, для каждого элемента:
     {
-        arrayA[i] = new Random().Next(-100, 101);   // выбирается случайное число из диапазона от -100 до 100 включительно
+        arrayA[i] = new Random().Next(-100, 101);           // выбирается случайное число из диапазона от -100 до 100 включительно
     }
 }
 
-void PrintArray(int[] arr)                          // метод для вывода массива на печать
+void PrintArray(int[] arr)                                  // метод вывода массива на печать
 {
-    for (int i = 0; i < arr.Length; i++)
+    for (int i = 0; i < arr.Length; i++)                    // каждый слудеющий элемент массива:
     {
-        Console.Write($"{arr[i]} ");
+        Console.Write($"{arr[i]} ");                        // вывести на экран с пробелом после
     }
-    Console.WriteLine(); Console.WriteLine();
+    Console.WriteLine(); Console.WriteLine();               // для красоты разделение текста на экране
 }
 
-FillArray(arrayA);
-Console.WriteLine(); Console.WriteLine($"Массив A из {(n)} случайных чисел из диапазона от -100 до 100 включительно:");
-PrintArray(arrayA);
+FillArray(arrayA);                                          // создать массив А при помощи метода
+Console.WriteLine();
+Console.WriteLine(txtArray);                                // текст (заголовок) - массив А
+PrintArray(arrayA);                                         // вывести на печать массив А при помощи метода
 
-// Элементы массива А, не нарушающие порядок чередования
+System.Console.WriteLine(txtAscending);                 // текст (заголовок) - выборка по возрастанию
 
-int current = arrayA[0];
-System.Console.WriteLine("Элементы массива А, не нарушающие порядок чередования:");
-System.Console.Write($"{current} ");
-for (int i = 1; i < n; i++)
+int current = arrayA[0];                                // первое текущее значение списка
+System.Console.Write($"{current} ");                    // вывод на печать первого элемента с пробелом после
+for (int i = 1; i < n; i++)                             // каждый следующий элемент массива:
 {
-    if (arrayA[i] > current)
+    if (arrayA[i] > current)                            // сравнить с текущим элементом
     {
-        current = arrayA[i];
-        System.Console.Write(current + " ");
+        current = arrayA[i];                            // если больше текущего, то переназначить текущий
+        System.Console.Write($"{current} ");            // вывести текущий на печать с пробелом после
     }
 }
-Console.WriteLine(); Console.WriteLine();
+Console.WriteLine(); Console.WriteLine();               // для красоты
+
+System.Console.WriteLine(txtMoreThan);                              // текст (заголовок) выборка больше k
+int j = 0;                                                          // переменная для обозначения индкса массива В                                            
+for (int i = 0; i < n; i++)                                         // для каждого следующео элемента массива А:
+    if (arrayA[i] > k) arrayB[j++] = arrayA[i];                     // если элемент больше k, записать его значение в следующий элемент массива В
+for (int i = 0; i < j; i++) System.Console.Write($"{arrayB[i]} ");  // вывести на печать массив В
+System.Console.WriteLine(); System.Console.WriteLine();             // для красоты
+
+
+// Значения, не нарушающие порядок знакочередования
+
+System.Console.WriteLine(txtAlterSign);                     // вывод текста (заголовка)
+int curr = arrayA[0];                                       // переменная - первое текущее значение = первому элементу массива А
+System.Console.Write($"{curr} ");                           // печать текущего значения
+for (int i = 0; i < n; i++)                                 // для каждого элемента массива А:
+{
+    if (curr >= 0 && arrayA[i] < 0)                         // если текущее значение >= 0 и элемент массива А < 0, то:
+    {
+        curr = arrayA[i];                                   // новое значение текущего элемента = элементу массива А
+        System.Console.Write($"{curr} ");                   // вывод на печать нового текущего элемента
+    }
+    else                                                    // иначе
+    {
+        if (curr < 0 && arrayA[i] >= 0)                     // если текущее значение < 0 и элемент массива А >= 0, то:
+        {
+            curr = arrayA[i];                               //новое значение текущего элемента = элементу массива А
+            System.Console.Write($"{curr} ");               // вывод на печать нового текущего элемента
+        }
+    }
+}
+
+System.Console.WriteLine(); System.Console.WriteLine();     // для красоты
+
 
