@@ -35,7 +35,6 @@ void PrintArray(int[] arr)                                  // метод выв
 }
 
 FillArray(arrayA);                                          // создать массив А при помощи метода
-// Console.WriteLine();
 Console.WriteLine(txtArray);                                // текст (заголовок) - массив А
 PrintArray(arrayA);                                         // вывести на печать массив А при помощи метода
 
