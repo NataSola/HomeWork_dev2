@@ -7,10 +7,10 @@ System.Console.WriteLine();
 // входные данные
 
 int n = 10;
-int k = 5;
+int k = 8;
 int[] arrayA = new int[n];
 int[] arrayB = new int[n];
-string txtArray = $"Массив A из {n} случайных чисел из диапазона от -100 до 100 включительно:";
+string txtArray = $"Массив A из {n} случайных чисел из диапазона от -50 до 100 включительно:";
 string txtAscending = "Массив В из элементов массива А, не нарушающих порядок чередования:";
 string txtMoreThan = $"Массив В из элементов массива А, которые больше {k}:";
 string txtAlterSign = "Массив В из элементов массива А, не нарушающих порядок знакочередования:";
@@ -21,13 +21,12 @@ void FillArray(int[] array)
 {
     for (int j = 0; j < n; j++)
     {
-        arrayA[j] = new Random().Next(-100, 101);
+        arrayA[j] = new Random().Next(-50, 101);
     }
 }
 
 void PrintArray(int[] arr)
 {
-    
     for (int i = 0; i < n; i++)
     {
         Console.Write($"{arr[i]} ");
