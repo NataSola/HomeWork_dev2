@@ -6,7 +6,7 @@ Console.Clear();                                            // очистить 
 
 // входные данные
 
-int n = 30;                                                 // размер массива
+int n = 10;                                                 // размер массива
 int k = 8;                                                  // переманная для выбора элементов больше k
 int[] arrayA = new int[n];                                  // объявление массивов
 int[] arrayB = new int[arrayA.Length];
@@ -35,7 +35,7 @@ void PrintArray(int[] arr)                                  // метод выв
 }
 
 FillArray(arrayA);                                          // создать массив А при помощи метода
-Console.WriteLine();
+// Console.WriteLine();
 Console.WriteLine(txtArray);                                // текст (заголовок) - массив А
 PrintArray(arrayA);                                         // вывести на печать массив А при помощи метода
 
@@ -88,5 +88,3 @@ for (int i = 0; i < n; i++)                                 // для каждо
 }
 
 System.Console.WriteLine(); System.Console.WriteLine();     // для красоты
-
-
